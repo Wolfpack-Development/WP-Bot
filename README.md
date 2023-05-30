@@ -15,7 +15,7 @@ version:
 beta 1.0.11
 
 letzes update:
-26.05.2023
+30.05.2023
 
 
 # Funktionen
