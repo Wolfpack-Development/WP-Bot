@@ -1,2 +1,26 @@
-# WP-Bot
-ein systembot für Wolfpack
+# entwickler
+@jules-creator
+@Vrexdz
+
+# infos
+sprache: Python
+
+
+bei fragen bitte wenden an 
+@vrexdz
+@jules-creator 
+
+
+version:
+beta 1.0.11
+
+letzes update:
+26.05.2023
+
+
+# Funktionen
+caps warn system
+
+
+# update informationen
+repository erstellt
