@@ -2,6 +2,7 @@ import discord
 import ezcord
 import os
 import json
+from dotenv import load_dotenv
 
 intents = discord.Intents.default()
 intents.message_content = True
@@ -23,6 +24,7 @@ sieben = discord.Color.purple()
 acht = discord.Color.dark_teal()
 neun = discord.Color.fuchsia()
 
+ausnahmen=['1', '2', '3', '4', '5', '6', '7', '8', '9']
 
 @bot.event
 async def on_message(message: discord.Message):
@@ -31,9 +33,13 @@ async def on_message(message: discord.Message):
     channel = bot.get_channel(1110218235892203610)
 
     if message.author != bot.user:
+
+
         lower = 0
         upper = 0
         for i in message.content:
+            if i in ausnahmen:
+                return
             if i.isupper():
                 upper += 1
             else:
@@ -68,16 +74,12 @@ async def on_message(message: discord.Message):
             elif (lower + upper) * 1.0 >= upper > lower * 0.9:
                 color = neun
                 print("90-100")
-        print("111")
-        print(upper)
-        print(lower)
-        await message.channel.send("upper")
         upperr = data[str(message.author.id)]["Caps"]
         print("1111111")
         upperr += 1
         data[str(message.author.id)]["Caps"] = upperr
         print("22222222222222222")
-        embed = discord.Embed(title="CAPS!!", color=color)
+        embed = discord.Embed(title=f'CAPS!!', color=color)
         embed.add_field(name="user", value=f'{message.author}')
         embed.add_field(name="zeit", value=f'{discord.utils.format_dt(discord.utils.utcnow(), style="R")}')
         embed.add_field(name="message", value=f'{message.content}\n'
@@ -87,17 +89,12 @@ async def on_message(message: discord.Message):
         print(config["configs"]["logchannel"])
         channel = bot.get_channel(config["configs"]["logchannel"])
         await channel.send(embed=embed)
-        await message.channel.send(upper)
-        await message.channel.send(lower)
-        print("timo")
         with open('caps.json', 'w') as f:
             json.dump(data, f, indent=4)
 
 
 bot.load_cogs("commands", subdirectories=True)
 
-with open('token.json', 'r') as T:
-    token = json.load(T)
-tok = token['tokens']['token']
 
-bot.run(tok)
+load_dotenv()
+bot.run(os.getenv("TOKEN"))
