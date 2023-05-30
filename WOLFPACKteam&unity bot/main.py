@@ -75,10 +75,8 @@ async def on_message(message: discord.Message):
                 color = neun
                 print("90-100")
         upperr = data[str(message.author.id)]["Caps"]
-        print("1111111")
         upperr += 1
         data[str(message.author.id)]["Caps"] = upperr
-        print("22222222222222222")
         embed = discord.Embed(title=f'CAPS!!', color=color)
         embed.add_field(name="user", value=f'{message.author}')
         embed.add_field(name="zeit", value=f'{discord.utils.format_dt(discord.utils.utcnow(), style="R")}')
