@@ -5,6 +5,12 @@
 # infos
 sprache: Python
 
+libary:
+
+- ezcord
+- pycord
+- python-dotenv
+
 
 bei fragen bitte wenden an 
 @vrexdz
